@@ -1,0 +1,7 @@
+{
+  "name": "Majin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
