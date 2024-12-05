@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FireUsuarioService } from './fire-usuario.service';
-import { firstValueFrom } from 'rxjs';
 import { Taller } from "../types"
 
 
@@ -10,7 +8,7 @@ import { Taller } from "../types"
 })
 export class FireTallerService {
 
-  constructor(private fireStore: AngularFirestore, private fireUsuario: FireUsuarioService) { }
+  constructor(private fireStore: AngularFirestore) { }
 
   private async getNewId(): Promise<number> {
     const counterRef = this.fireStore.collection('counters').doc('tripCounter');
@@ -28,15 +26,10 @@ export class FireTallerService {
     }
   }
 
-  async crearTaller(taller: any, rutInstructor: string) {
+  async crearTaller(taller: any) {
     try {
       const newId = await this.getNewId();
       taller.id = newId;
-
-      const instructor =  firstValueFrom(this.fireUsuario.getUsuario(rutInstructor));
-      if (!instructor) {
-          return false; 
-      }
 
       const docRef = this.fireStore.collection('talleres').doc(newId.toString());
       const docActual = await docRef.get().toPromise();

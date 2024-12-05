@@ -5,7 +5,7 @@ import { Material } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class MaterialService {
+export class FireMaterialService {
   private collectionName = 'materiales'; // Nombre de la colección en Firestore
 
   constructor(private fireStore: AngularFirestore) {}

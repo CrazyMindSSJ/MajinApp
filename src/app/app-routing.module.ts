@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'admin-region-comuna',
     loadChildren: () => import('./pages/admin-region-comuna/admin-region-comuna.module').then( m => m.AdminRegionComunaPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
 ];
 
 @NgModule({

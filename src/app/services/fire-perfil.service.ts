@@ -6,7 +6,7 @@ import { Perfil } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class PerfilService {
+export class FirePerfilService {
   private collectionName = 'perfiles'; // Nombre de la colección en Firestore
 
   constructor(

@@ -5,7 +5,7 @@ import { Municipalidad } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class MunicipalidadService {
+export class FireMunicipalidadService {
   private collectionName = 'municipalidades'; // Nombre de la colección en Firestore
 
   constructor(private fireStore: AngularFirestore) {}

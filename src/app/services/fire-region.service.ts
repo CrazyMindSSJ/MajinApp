@@ -5,7 +5,7 @@ import { Region } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class RegionService {
+export class FireRegionService {
   private collectionName = 'regiones';
 
   constructor(private fireStore: AngularFirestore) {}

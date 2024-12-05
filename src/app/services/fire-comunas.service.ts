@@ -5,7 +5,7 @@ import { Comuna } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class ComunaService {
+export class FireComunaService {
   private collectionName = 'comunas'; 
 
   constructor(private fireStore: AngularFirestore) {}

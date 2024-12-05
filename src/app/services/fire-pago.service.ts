@@ -5,7 +5,7 @@ import { Pago } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class PagoService {
+export class FirePagoService {
   private collectionName = 'pagos'; // Nombre de la colección en Firestore
   private counterCollection = 'counters'; // Nombre de la colección para mantener el contador
 

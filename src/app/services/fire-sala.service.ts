@@ -5,7 +5,7 @@ import { Sala } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class SalaService {
+export class FireSalaService {
   private collectionName = 'salas'; 
 
   constructor(private fireStore: AngularFirestore) {}
