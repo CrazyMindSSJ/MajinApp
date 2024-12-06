@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: TalleresPage
-  }
+  },
+  {
+    path: 'taller:id',
+    loadChildren: () => import('../taller/taller.module').then( m => m.TallerPageModule)
+  },
 ];
 
 @NgModule({

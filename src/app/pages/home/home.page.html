@@ -1,58 +1,92 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Majin App
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar style="--background: #0066cc; box-shadow: none;">
+      <ion-title style="color: white; font-weight: bold; font-size: 18px;">Menú de Inicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content style="background: transparent; margin: 0; padding: 0; box-shadow: none;">
+    <ion-list style="margin: 0; padding: 0;">
+
+      <!-- Mis Talleres -->
+      <ion-item expand="block" routerLink="/talleres" 
+        style="--background: #80c7f9; color: white; border-radius: 10px; margin-bottom: 12px; font-size: 18px; box-shadow: none; transition: all 0.3s ease-in-out;">
+        <ion-icon name="construct-outline" slot="start" style="color: #ffffff; font-size: 22px;"></ion-icon>
+        <span>Talleres</span>
+      </ion-item>
+
+
+      <!-- Admin Talleres (solo visible para administradores) -->
+      <ion-item *ngIf="usuario?.tipo_usuario == 'administrador'" routerLink="/admin-talleres" 
+        style="--background: #ffcc00; color: black; border-radius: 10px; margin-bottom: 12px; font-size: 18px; box-shadow: none; transition: all 0.3s ease-in-out;">
+        <ion-icon name="settings-outline" slot="start" style="color: #000000; font-size: 22px;"></ion-icon>
+        <span>Administrar Talleres</span>
+      </ion-item>
+
+      <!-- Admin Usuarios (solo visible para administradores) -->
+      <ion-item *ngIf="usuario?.tipo_usuario == 'administrador'" routerLink="/admin-usuario" 
+        style="--background: #ffcc00; color: black; border-radius: 10px; margin-bottom: 12px; font-size: 18px; box-shadow: none; transition: all 0.3s ease-in-out;">
+        <ion-icon name="people-outline" slot="start" style="color: #000000; font-size: 22px;"></ion-icon>
+        <span>Administrar Usuarios</span>
+      </ion-item>
+
+      <!-- Admin Comunas (solo visible para administradores) -->
+      <ion-item *ngIf="usuario?.tipo_usuario == 'administrador'" routerLink="/admin-comuna" 
+        style="--background: #ffcc00; color: black; border-radius: 10px; margin-bottom: 12px; font-size: 18px; box-shadow: none; transition: all 0.3s ease-in-out;">
+        <ion-icon name="map-outline" slot="start" style="color: #000000; font-size: 22px;"></ion-icon>
+        <span>Administrar Comunas</span>
+      </ion-item>
+
+      <!-- Cerrar sesión -->
+      <ion-item (click)="cerrarSesion()" expand="block" 
+        style="--background: #ff6666; color: white; border-radius: 10px; margin-top: 20px; font-size: 18px; padding: 12px 0; text-align: center; font-weight: bold; box-shadow: none; transition: all 0.3s ease-in-out;">
+        <ion-icon name="log-out-outline" slot="start" style="color: white; font-size: 22px;"></ion-icon>
+        <span>Cerrar sesión</span>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Main content area -->
+<div class="ion-page" id="main-content" style="background: #f0f8ff; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+  <ion-header>
+    <ion-toolbar style="--background: #0066cc; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+      <ion-buttons slot="start">
+        <ion-menu-button style="color: white; font-size: 28px; padding: 5px;"></ion-menu-button>
+      </ion-buttons>
+      <ion-title style="font-size: 15px; color: white; font-weight: bold; text-align: center;">
+        Bienvenido {{usuario?.nombre}} a MajinApp!
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <!-- Bottom Tabs -->
   <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <!-- Botón de la pestaña Home -->
-      <ion-tab-button tab="home">
-        <ion-icon name="home"></ion-icon>
-        <ion-label>Home</ion-label>
+    <ion-tab-bar slot="bottom" style="--background: #0066cc; box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);">
+      <ion-tab-button tab="talleres">
+        <ion-icon name="construct-outline" style="color: white;"></ion-icon>
       </ion-tab-button>
 
-      <!-- Botón de la pestaña Settings -->
-      <ion-tab-button tab="settings">
-        <ion-icon name="settings"></ion-icon>
-        <ion-label>Settings</ion-label>
+      <ion-tab-button tab="pagos">
+        <ion-icon name="wallet-outline" style="color: white;"></ion-icon>
       </ion-tab-button>
+
+      <ion-tab-button *ngIf="usuario?.tipo_usuario == 'administrador'" tab="admin-talleres">
+        <ion-icon name="settings-outline" style="color: #000000;"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button *ngIf="usuario?.tipo_usuario == 'administrador'" tab="admin-usuario">
+        <ion-icon name="people-outline" style="color: #000000;"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button *ngIf="usuario?.tipo_usuario == 'administrador'" tab="admin-comuna">
+        <ion-icon name="map-outline" style="color: #000000;"></ion-icon>
+      </ion-tab-button>
+
+      
     </ion-tab-bar>
   </ion-tabs>
-
-  <ion-content>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Hola usuario</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-       ¿Que talleres deseas tomar hoy?
-      </ion-card-content>
-    </ion-card>
-    <ion-content class="ion-padding">
-      <!-- Botón para el Taller 1 -->
-      <ion-button expand="block" color="primary" href="/taller1">
-        Taller 1: ping pong
-      </ion-button>
-    
-      <!-- Botón para el Taller 2 -->
-      <ion-button expand="block" color="secondary" href="/taller2">
-        Taller 2: futbol
-      </ion-button>
-    
-      <!-- Botón para el Taller 3 -->
-      <ion-button expand="block" color="tertiary" href="/taller3">
-        Taller 3: tejer
-      </ion-button>
-    
-      <!-- Botón para el Taller 4 -->
-      <ion-button expand="block" color="success" href="/taller4">
-        Taller 4: zumba
-      </ion-button>
-    </ion-content>
-  </ion-content>
-  
-</ion-content>
+</div>

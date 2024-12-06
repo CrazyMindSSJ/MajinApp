@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FireUsuarioService } from 'src/app/services/fire-usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +13,23 @@ export class HomePage implements OnInit {
 
   constructor(
     private fireAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private usuarioService: FireUsuarioService
   ) {}
 
   async ngOnInit() {
     await this.validarUsuario();
+    console.log(this.usuario)
   }
 
   // Método para validar si el usuario está autenticado
   private async validarUsuario() {
     this.usuario = await this.fireAuth.authState.toPromise();
+
+    // Simulando la obtención de datos del servicio
+    this.usuarioService.getUsuario(this.usuario.rut).subscribe(data => {
+      this.usuario = data;
+    });
 
     if (!this.usuario) {
       console.error('Usuario no autenticado. Redirigiendo a la página de inicio de sesión...');

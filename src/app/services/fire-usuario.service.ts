@@ -42,22 +42,8 @@ export class FireUsuarioService {
 
   public async login(correo: string, contrasena: string): Promise<boolean> {
     await this.fireAuth.signInWithEmailAndPassword(correo, contrasena);
-      
-      const usuariosSnapshot = await this.fireStore.collection('usuarios', ref => ref.where('correo', '==', correo)).get().toPromise();
-      
-      if (usuariosSnapshot && !usuariosSnapshot.empty) {
-        const usuario = usuariosSnapshot.docs[0].data() as { rut: string; nombre: string };
-        const rut = usuario.rut || '';
-        const nombre = usuario.nombre || '';
-    
-        localStorage.setItem('userRut', rut);
-        localStorage.setItem('usuario', JSON.stringify(usuario));
-        localStorage.setItem('nombreConductor', nombre);
-        
         return true;
-      }
-      
-      return false;
+
   }
 
 

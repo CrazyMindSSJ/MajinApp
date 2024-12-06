@@ -1,43 +1,132 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Registro</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="usuario" (ngSubmit)="registrar()">
+    <!-- Campo para el RUT -->
+    <ion-item>
+      <ion-label position="floating">RUT</ion-label>
+      <ion-input type="text" formControlName="rut" placeholder="Ingrese su RUT" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.rut.invalid && usuario.controls.rut.touched">
+      <p>El RUT es inválido.</p>
+    </ion-text>
 
-  <div class="registro-container">
     <!-- Campo para el nombre -->
     <ion-item>
-      <ion-label position="floating">Nombre Completo</ion-label>
-      <ion-input type="text" placeholder="Ingresa tu nombre"></ion-input>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="nombre" placeholder="Ingrese su nombre" required></ion-input>
     </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.nombre.invalid && usuario.controls.nombre.touched">
+      <p>El nombre es inválido.</p>
+    </ion-text>
+
+    <!-- Campo para el apellido -->
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" formControlName="apellido" placeholder="Ingrese su apellido" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.apellido.invalid && usuario.controls.apellido.touched">
+      <p>El apellido es inválido.</p>
+    </ion-text>
+
+    <!-- Campo para la dirección -->
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input type="text" formControlName="direccion" placeholder="Ingrese su dirección" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.direccion.invalid && usuario.controls.direccion.touched">
+      <p>La dirección es inválida.</p>
+    </ion-text>
+
+    <!-- Campo para la fecha de nacimiento -->
+    <ion-item>
+      <ion-label position="floating">Fecha de nacimiento</ion-label>
+      <ion-datetime formControlName="fecha_nacimiento" display-format="DD/MM/YYYY" placeholder="Seleccione su fecha de nacimiento" required></ion-datetime>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.fecha_nacimiento.invalid && usuario.controls.fecha_nacimiento.touched">
+      <p>La fecha de nacimiento es inválida.</p>
+    </ion-text>
+
+    <!-- Campo para el género -->
+    <ion-item>
+      <ion-label position="floating">Género</ion-label>
+      <ion-select formControlName="genero" placeholder="Seleccione su género" required>
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="femenino">Femenino</ion-select-option>
+        <ion-select-option value="otro">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.genero.invalid && usuario.controls.genero.touched">
+      <p>Debe seleccionar un género.</p>
+    </ion-text>
+
+    <!-- Campo para el teléfono -->
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input type="tel" formControlName="telefono" placeholder="Ingrese su teléfono" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.telefono.invalid && usuario.controls.telefono.touched">
+      <p>El teléfono es inválido.</p>
+    </ion-text>
 
     <!-- Campo para el correo electrónico -->
     <ion-item>
-      <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input type="email" placeholder="ejemplo@correo.com"></ion-input>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" formControlName="email" placeholder="Ingrese su correo electrónico" required></ion-input>
     </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.email.invalid && usuario.controls.email.touched">
+      <p>El correo electrónico es inválido.</p>
+    </ion-text>
 
     <!-- Campo para la contraseña -->
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" placeholder="********"></ion-input>
+      <ion-input type="password" formControlName="contra" placeholder="Ingrese su contraseña" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.contra.invalid && usuario.controls.contra.touched">
+      <p>La contraseña debe tener al menos 8 caracteres y un carácter especial.</p>
+    </ion-text>
+
+    <!-- Campo para la confirmación de contraseña -->
+    <ion-item>
+      <ion-label position="loating">Confirmar contraseña</ion-label>
+      <ion-input type="password" formControlName="contraVali" placeholder="Confirme su contraseña" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usuario.controls.contraVali.invalid && usuario.controls.contraVali.touched">
+      <p>Las contraseñas no coinciden.</p>
+    </ion-text>
+
+    <!-- Campo para tipo de usuario -->
+    <ion-item>
+      <ion-label position="floating">Tipo de usuario</ion-label>
+      <ion-select formControlName="tipo_usuario" placeholder="Seleccione el tipo de usuario" required>
+        <ion-select-option value="Adulto_mayor">Aduto mayor</ion-select-option>
+        <ion-select-option value="Instructor">Instructor</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <!-- Botón para registrarse -->
-    <ion-button expand="block" color="primary" routerLink="/home">
-      Registrarse
-    </ion-button>
+    <!-- Campo para la comuna -->
+    <ion-item>
+      <ion-label position="floating">Comuna</ion-label>
+      <ion-input type="text" formControlName="comuna" placeholder="Ingrese su comuna" required></ion-input>
+    </ion-item>
 
-    <!-- Enlace para volver al login -->
-    <ion-button expand="block" color="secondary" fill="outline" routerLink="/login">
-      Volver al Login
-    </ion-button>
-  </div>
+    <!-- Campo para la región -->
+    <ion-item>
+      <ion-label position="floating">Región</ion-label>
+      <ion-input type="text" formControlName="region" placeholder="Ingrese su región" required></ion-input>
+    </ion-item>
+
+    <!-- Botón de registro -->
+    <ion-button expand="full" type="submit" [disabled]="usuario.invalid">Registrar</ion-button>
+  </form>
 </ion-content>

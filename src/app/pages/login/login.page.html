@@ -1,37 +1,35 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Iniciar Sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div class="login-container">
-    <!-- Campo para el email -->
+<ion-content>
+  <form (ngSubmit)="login()">
+    <!-- Campo de correo electrónico -->
     <ion-item>
       <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input type="email" placeholder="ejemplo@correo.com"></ion-input>
+      <ion-input type="email" [(ngModel)]="email" name="email" required placeholder="Ingrese su correo electrónico"></ion-input>
     </ion-item>
+    <ion-text color="danger" *ngIf="email && !email.includes('@')">
+      <p>Ingrese un correo válido.</p>
+    </ion-text>
 
-    <!-- Campo para la contraseña -->
+    <!-- Campo de contraseña -->
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" placeholder="********"></ion-input>
+      <ion-input [type]="tipoContrasenia" [(ngModel)]="contrasena" name="contrasena" required placeholder="Ingrese su contraseña"></ion-input>
+      <ion-icon name="{{ iconoContrasenia }}" slot="end" (click)="mostrarClave()"></ion-icon>
     </ion-item>
-
-    <!-- Botón para iniciar sesión -->
-    <ion-button expand="block" color="primary" routerLink="/home">
-      Iniciar Sesión
-    </ion-button>
-
-    <!-- Botón para ir a registro -->
-    <ion-button expand="block" color="secondary" fill="outline" routerLink="/registro">
-      Registrarse
-    </ion-button>
-  </div>
+    
+    <!-- Botón de iniciar sesión -->
+    <ion-button expand="full" type="submit" [disabled]="!email || !contrasena">Iniciar Sesión</ion-button>
+    
+    <!-- Enlace para ir al registro -->
+    <ion-footer>
+      <ion-item lines="none" class="ion-text-center">
+        <p>¿No tienes cuenta? <ion-router-link routerLink="/registro">Regístrate</ion-router-link></p>
+      </ion-item>
+    </ion-footer>
+  </form>
 </ion-content>
