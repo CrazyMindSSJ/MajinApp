@@ -1,17 +1,58 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Majin app
+      Majin App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-tabs>
-    <ion-tab-bar>
-      <ion-tab-button>
-        
+    <ion-tab-bar slot="bottom">
+      <!-- Botón de la pestaña Home -->
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <!-- Botón de la pestaña Settings -->
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>Settings</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
+
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Hola usuario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       ¿Que talleres deseas tomar hoy?
+      </ion-card-content>
+    </ion-card>
+    <ion-content class="ion-padding">
+      <!-- Botón para el Taller 1 -->
+      <ion-button expand="block" color="primary" href="/taller1">
+        Taller 1: ping pong
+      </ion-button>
+    
+      <!-- Botón para el Taller 2 -->
+      <ion-button expand="block" color="secondary" href="/taller2">
+        Taller 2: futbol
+      </ion-button>
+    
+      <!-- Botón para el Taller 3 -->
+      <ion-button expand="block" color="tertiary" href="/taller3">
+        Taller 3: tejer
+      </ion-button>
+    
+      <!-- Botón para el Taller 4 -->
+      <ion-button expand="block" color="success" href="/taller4">
+        Taller 4: zumba
+      </ion-button>
+    </ion-content>
+  </ion-content>
+  
 </ion-content>
