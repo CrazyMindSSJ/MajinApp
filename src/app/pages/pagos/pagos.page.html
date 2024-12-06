@@ -1,13 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>pagos</ion-title>
+    <ion-title>Pagos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">pagos</ion-title>
+      <ion-title size="large">Pagos</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <!-- Lista de pagos -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Historial de Pagos</ion-card-title>
+      <ion-card-subtitle>Detalles de transacciones</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list>
+    <!-- Pago 1 -->
+    <ion-item>
+      <ion-label>
+        <h2>Pago de Taller</h2>
+        <p>10 de noviembre de 2024 - $50.00</p>
+      </ion-label>
+      <ion-badge color="success">Completado</ion-badge>
+    </ion-item>
+
+    <!-- Pago 2 -->
+    <ion-item>
+      <ion-label>
+        <h2>Pago de Membresía</h2>
+        <p>15 de noviembre de 2024 - $20.00</p>
+      </ion-label>
+      <ion-badge color="warning">Pendiente</ion-badge>
+    </ion-item>
+
+    <!-- Pago 3 -->
+    <ion-item>
+      <ion-label>
+        <h2>Pago de Curso</h2>
+        <p>20 de noviembre de 2024 - $75.00</p>
+      </ion-label>
+      <ion-badge color="success">Completado</ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <!-- Resumen del pago -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumen de Pagos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Total Pagado: <strong>$125.00</strong></p>
+      <p>Total Pendiente: <strong>$20.00</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón para realizar un pago -->
+  <ion-button expand="block" color="primary">
+    Realizar Nuevo Pago
+  </ion-button>
 </ion-content>
