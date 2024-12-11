@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FireUsuarioService } from 'src/app/services/fire-usuario.service';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+
+
 
 @Component({
   selector: 'app-home',
@@ -9,12 +12,15 @@ import { FireUsuarioService } from 'src/app/services/fire-usuario.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  [x: string]: any;
   usuario: any = null; // Almacenará los datos del usuario autenticado
+
 
   constructor(
     private fireAuth: AngularFireAuth,
     private router: Router,
-    private usuarioService: FireUsuarioService
+    private usuarioService: FireUsuarioService,
+    private firestore : FireUsuarioService
   ) {}
 
   async ngOnInit() {
@@ -49,4 +55,8 @@ export class HomePage implements OnInit {
       console.error('Error al cerrar sesión:', error);
     }
   }
+
+ 
+
+
 }

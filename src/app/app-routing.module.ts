@@ -28,6 +28,11 @@ const routes: Routes = [
     path: 'pago',
     loadChildren: () => import('./pages/pago/pago.module').then( m => m.PagoPageModule)
   },
+
+  {
+    path:'taller',
+    loadChildren: () => import('./pages/taller/taller.module').then(m => m.TallerPageModule)
+  },
   
   {
     path: '**',

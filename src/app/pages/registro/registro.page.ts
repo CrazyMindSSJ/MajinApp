@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { FireUsuarioService } from 'src/app/services/fire-usuario.service';
 
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -90,5 +91,6 @@ export class RegistroPage implements OnInit {
       return null;
     };
   }
+
 
 }

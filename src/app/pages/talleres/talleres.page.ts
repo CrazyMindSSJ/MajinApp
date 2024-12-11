@@ -15,6 +15,8 @@ export class TalleresPage implements OnInit {
     this.cargarTalleres();
   }
 
+  
+
   // Método para cargar la lista de talleres desde Firestore
   cargarTalleres() {
     this.tallerService.getTalleres().subscribe((data) => {
