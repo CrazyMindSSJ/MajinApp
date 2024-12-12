@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TallerPage } from './pages/taller/taller.page';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
+
+  { path: 'taller/:id', component: TallerPage, 
+    loadChildren: () => import('./pages/taller/taller.module').then(m => m.TallerPageModule)
   },
 ];
 

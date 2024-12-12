@@ -32,7 +32,6 @@ export class RegistroTallerPage implements OnInit {
     const fechaInicioValue = this.taller.controls.fecha_inicio.value;
     const fechaFinValue = this.taller.controls.fecha_fin.value;
 
-    // Verificamos que no sean null o undefined antes de convertirlas en fechas
     if (!fechaInicioValue || !fechaFinValue) {
       alert("Las fechas no pueden estar vacías.");
       return false;
@@ -42,19 +41,16 @@ export class RegistroTallerPage implements OnInit {
     const fechaFin = new Date(fechaFinValue);
     const fechaActual = new Date();
 
-    // Verificamos que la fecha de inicio no sea anterior a la fecha actual
     if (fechaInicio < fechaActual) {
       alert("La fecha de inicio no puede ser anterior a la fecha actual.");
       return false;
     }
 
-    // Verificamos que la fecha de fin no sea anterior a la fecha actual
     if (fechaFin < fechaActual) {
       alert("La fecha de fin no puede ser anterior a la fecha actual.");
       return false;
     }
 
-    // Verificamos que la fecha de fin no sea anterior a la fecha de inicio
     if (fechaFin < fechaInicio) {
       alert("La fecha de fin no puede ser anterior a la fecha de inicio.");
       return false;
@@ -69,7 +65,6 @@ export class RegistroTallerPage implements OnInit {
       return; // Si las fechas no son válidas, no continuar con el registro
     }
 
-    // Aquí puedes añadir la lógica adicional para crear el taller
     if (await this.fireTaller.crearTaller(this.taller.value)) {
       this.router.navigate(['/talleres']);  // Redirige después de registrar el taller
       this.taller.reset();  // Resetea el formulario

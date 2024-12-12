@@ -14,7 +14,7 @@ export class TallerPage implements OnInit {
   taller: any = {}; // Objeto para almacenar los datos del taller
   usuario: any; // Datos del usuario autenticado desde Firebase Auth
   puedeTomarTaller: boolean = false; // Controla si el usuario puede inscribirse en el taller
-  isLoading: boolean = true; // Indicador de carga
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,7 +26,7 @@ export class TallerPage implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id') || '';
     await this.obtenerUsuario();
     await this.obtenerTaller();
-    this.isLoading = false;
+
   }
 
   // Método para obtener los detalles del usuario autenticado
@@ -58,7 +58,7 @@ export class TallerPage implements OnInit {
       console.error('Usuario no autenticado');
       return;
     }
-    this.isLoading = true;
+
     const exito = await this.fireTallerService.tomarTaller(this.id, this.usuario.uid);
     if (exito) {
       console.log('Te has inscrito en el taller');
@@ -66,7 +66,7 @@ export class TallerPage implements OnInit {
     } else {
       console.error('No se pudo inscribir en el taller');
     }
-    this.isLoading = false;
+
   }
 
   // Método para salir del taller
@@ -75,7 +75,7 @@ export class TallerPage implements OnInit {
       console.error('Usuario no autenticado');
       return;
     }
-    this.isLoading = true;
+    
     const exito = await this.fireTallerService.salirTaller(this.id, this.usuario.uid);
     if (exito) {
       console.log('Has salido del taller');
@@ -83,6 +83,6 @@ export class TallerPage implements OnInit {
     } else {
       console.error('No se pudo salir del taller');
     }
-    this.isLoading = false;
+    
   }
 }

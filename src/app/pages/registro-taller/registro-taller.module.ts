@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
 import { RegistroTallerPageRoutingModule } from './registro-taller-routing.module';
-
 import { RegistroTallerPage } from './registro-taller.page';
 
 @NgModule({
@@ -13,7 +10,8 @@ import { RegistroTallerPage } from './registro-taller.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RegistroTallerPageRoutingModule
+    RegistroTallerPageRoutingModule,
+    ReactiveFormsModule // Añade ReactiveFormsModule aquí
   ],
   declarations: [RegistroTallerPage]
 })

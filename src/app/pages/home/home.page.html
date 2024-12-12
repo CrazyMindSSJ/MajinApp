@@ -85,6 +85,10 @@
         <ion-icon name="wallet-outline"></ion-icon>
       </ion-tab-button>
 
+      <ion-tab-button *ngIf="usuario?.tipo_usuario == 'instructor'" tab="registro-taller">
+        <ion-icon name="barbell-outline"></ion-icon>
+      </ion-tab-button>
+
       <ion-tab-button *ngIf="usuario?.tipo_usuario == 'administrador'" tab="admin-talleres">
         <ion-icon name="settings-outline"></ion-icon>
       </ion-tab-button>

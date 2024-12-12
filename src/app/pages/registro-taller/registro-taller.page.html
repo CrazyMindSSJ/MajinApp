@@ -1,13 +1,35 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>registro-taller</ion-title>
+    <ion-title>Registrar Taller</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registro-taller</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="taller" (ngSubmit)="registrar()">
+    <ion-item>
+      <ion-label position="floating">Instructor</ion-label>
+      <ion-input formControlName="instructor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">RUT Instructor</ion-label>
+      <ion-input formControlName="rut_instructor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Capacidad Disponible</ion-label>
+      <ion-input formControlName="capa_disp" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre del Taller</ion-label>
+      <ion-input formControlName="nombre_taller"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha de Inicio</ion-label>
+      <ion-datetime formControlName="fecha_inicio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha de Fin</ion-label>
+      <ion-datetime formControlName="fecha_fin"></ion-datetime>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="taller.invalid">Registrar Taller</ion-button>
+  </form>
 </ion-content>
