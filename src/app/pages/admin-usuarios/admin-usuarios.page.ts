@@ -115,4 +115,21 @@ export class AdminUsuariosPage implements OnInit {
       region: usuario.region,
     });
   }
+
+  // Método para obtener el tipo de input
+  getInputType(controlName: string): string {
+    switch (controlName) {
+      case 'fecha_nacimiento':
+        return 'date';
+      case 'telefono':
+        return 'tel';
+      case 'correo':
+        return 'email';
+      case 'contra':
+      case 'contraVali':
+        return 'password';
+      default:
+        return 'text';
+    }
+  }
 }

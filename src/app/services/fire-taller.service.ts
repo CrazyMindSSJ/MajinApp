@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Taller } from "../types"
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +50,11 @@ export class FireTallerService {
     return this.fireStore.collection('talleres').valueChanges();
   }
 
-  getTaller(id_taller: string){
-    return this.fireStore.collection('talleres').doc<Taller>(id_taller).valueChanges();
+  getTaller(id: string): Observable<any> {
+    return this.fireStore
+      .collection('talleres')
+      .doc(id)
+      .valueChanges(); // Asegúrate de que esta ruta es correcta.
   }
 
   updateTaller(taller: any){

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { FireTallerService } from 'src/app/services/fire-taller.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-taller',
@@ -19,7 +21,8 @@ export class TallerPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private fireTallerService: FireTallerService,
-    private fireAuth: AngularFireAuth
+    private fireAuth: AngularFireAuth,
+    private firestore: AngularFirestore
   ) {}
 
   async ngOnInit() {
@@ -85,4 +88,8 @@ export class TallerPage implements OnInit {
     }
     
   }
+  // Método para obtener la lista de talleres
+  getTalleres(): Observable<any[]> {
+    return this.firestore.collection('talleres').valueChanges();
+}
 }

@@ -1,23 +1,28 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Detalles del Taller</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{taller.nombre_taller}}</ion-card-title>
+      <ion-card-subtitle>Instructor: {{ taller.instructor }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Fecha:</strong> {{taller.fecha_inicio}}</p>
+      <p><strong>Capacidad Disponible:</strong> {{ taller.capa_disp || '0' }}</p>
+      <p><strong>Descripción:</strong> {{ taller.descripcion || 'Sin descripción disponible' }}</p>
+    </ion-card-content>
+  </ion-card>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{taller.nombre_taller}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Fecha: {{taller.instructor}}</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-button expand="block" type="submit" color="primary" (click)="tomarTaller()" *ngIf="puedeTomarTaller">
-      Inscribirse en el taller
-    </ion-button>
-    <ion-button expand="block" type="submit" color="danger" (click)="salirTaller()">
-      Salir de taller
-    </ion-button>
+  <!-- Botones -->
+  <ion-button expand="block" color="primary" (click)="tomarTaller()">
+    Inscribirse en el taller
+  </ion-button>
+
+  <ion-button expand="block" color="danger" (click)="salirTaller()">
+    Salir del taller
+  </ion-button>
 </ion-content>
